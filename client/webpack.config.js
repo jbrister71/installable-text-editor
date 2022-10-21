@@ -16,11 +16,13 @@ module.exports = () => {
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      assetModuleFilename: '[name][ext]'
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Webpack Plugin',
+        favicon: './favicon.ico'
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
@@ -53,8 +55,8 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-          type: 'asset/resource',
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource'
         },
         {
           test: /\.css$/i,
